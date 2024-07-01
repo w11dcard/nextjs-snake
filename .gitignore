@@ -19,8 +19,7 @@ temp/
 *.o
 *.so
 *.swp
+*.ini
 .env
 .env.local
 next-env.d.ts
-Desktop.ini
-Thumbs.db

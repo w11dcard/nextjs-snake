@@ -109,7 +109,7 @@ export default function SnakeGrid() {
 			{isGameOver && (
 				<div className="absolute inset-0 flex flex-col items-center justify-center text-center text-4xl font-bold text-red-700">
 					<div>Game Over!</div>
-					<div className="mt-4 text-2xl">Reload To Play Again</div>
+					<div className="mt-4 text-sm">Reload To Play Again</div>
 				</div>
 			)}
 

@@ -7,13 +7,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"format": "prettier --write . && next lint",
-		"db:dev": "prisma generate && prisma migrate dev",
-		"db:deploy": "prisma migrate deploy",
-		"db:studio": "prisma studio"
+		"format": "prettier --write . && next lint"
 	},
 	"dependencies": {
-		"lucide-react": "0.399.0",
 		"next": "14.2.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
@@ -33,7 +29,6 @@
 		"postcss": "8",
 		"prettier": "3.2.5",
 		"prettier-plugin-tailwindcss": "0.5.14",
-		"prisma": "5.14.0",
 		"tailwindcss": "3.4.1",
 		"typescript": "5"
 	}

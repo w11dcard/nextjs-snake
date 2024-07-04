@@ -1,15 +1,7 @@
 "use client"
 
+import { Direction, GRID_SIZE, Point } from "@/lib/types"
 import { useCallback, useEffect, useState } from "react"
-
-const GRID_SIZE = 20
-
-type Point = {
-	x: number
-	y: number
-}
-
-type Direction = "UP" | "DOWN" | "LEFT" | "RIGHT"
 
 export default function SnakeGrid() {
 	const [snake, setSnake] = useState<Point[]>([
@@ -33,6 +25,8 @@ export default function SnakeGrid() {
 	}, [])
 
 	const moveSnake = useCallback(() => {
+		if (isGameOver) return // Stop moving if game over
+
 		const newSnake = [...snake]
 		const snakeHead = newSnake[0]
 
@@ -42,6 +36,7 @@ export default function SnakeGrid() {
 
 		const newSnakeHead = { ...snakeHead }
 
+		// Move snake based on direction
 		if (direction === "UP") {
 			newSnakeHead.y -= 1
 		} else if (direction === "DOWN") {
@@ -52,6 +47,7 @@ export default function SnakeGrid() {
 			newSnakeHead.x += 1
 		}
 
+		// Check if snake hits the wall or itself
 		if (
 			newSnakeHead.x < 0 ||
 			newSnakeHead.x >= GRID_SIZE ||
@@ -65,6 +61,7 @@ export default function SnakeGrid() {
 
 		newSnake.unshift(newSnakeHead)
 
+		// Check if snake eats the food
 		if (newSnakeHead.x === food.x && newSnakeHead.y === food.y) {
 			generateFood()
 		} else {
@@ -72,19 +69,24 @@ export default function SnakeGrid() {
 		}
 
 		setSnake(newSnake)
-	}, [direction, food.x, food.y, generateFood, snake])
+	}, [direction, food, generateFood, isGameOver, snake])
 
+	// Generate initial food and start moving snake
 	useEffect(() => {
 		generateFood()
 	}, [generateFood])
 
+	// Start interval for snake movement
 	useEffect(() => {
-		const interval = setInterval(moveSnake, 200)
+		const interval = setInterval(moveSnake, 100)
 		return () => clearInterval(interval)
 	}, [moveSnake])
 
+	// Handle keyboard input for snake direction
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
+			if (isGameOver) return // Ignore key presses if game over
+
 			if (event.key === "ArrowUp" && direction !== "DOWN") {
 				setDirection("UP")
 			} else if (event.key === "ArrowDown" && direction !== "UP") {
@@ -100,24 +102,26 @@ export default function SnakeGrid() {
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown)
 		}
-	}, [direction])
+	}, [direction, isGameOver])
 
 	return (
 		<div className="grid-cols-20 grid-rows-20 grid border">
 			{isGameOver && (
-				<div className="absolute inset-0 flex items-center justify-center text-center text-4xl font-bold text-red-700">
-					Game Over!
+				<div className="absolute inset-0 flex flex-col items-center justify-center text-center text-4xl font-bold text-red-700">
+					<div>Game Over!</div>
+					<div className="mt-4 text-2xl">Reload To Play Again</div>
 				</div>
 			)}
+
 			{Array.from({ length: GRID_SIZE }).map((_, y) => (
 				<div key={y} className="flex">
 					{Array.from({ length: GRID_SIZE }).map((_, x) => (
 						<div
 							key={x}
-							style={{ boxSizing: "border-box" }}
 							className={`h-5 w-5 border border-gray-300 ${
 								snake.some((snakePart) => snakePart.x === x && snakePart.y === y) ? "bg-green-700" : ""
 							} ${food.x === x && food.y === y ? "bg-red-700" : ""}`}
+							style={{ boxSizing: "border-box" }}
 						></div>
 					))}
 				</div>

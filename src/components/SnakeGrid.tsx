@@ -1,6 +1,6 @@
 "use client"
 
-import { Direction, GRID_SIZE, Point } from "@/app/lib/types"
+import { Direction, GRID_SIZE, Point } from "@/src/lib/types"
 import { useCallback, useEffect, useState } from "react"
 
 export default function SnakeGrid() {

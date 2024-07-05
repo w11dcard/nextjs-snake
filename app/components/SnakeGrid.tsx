@@ -1,6 +1,6 @@
 "use client"
 
-import { Direction, GRID_SIZE, Point } from "@/lib/types"
+import { Direction, GRID_SIZE, Point } from "@/app/lib/types"
 import { useCallback, useEffect, useState } from "react"
 
 export default function SnakeGrid() {
@@ -25,7 +25,7 @@ export default function SnakeGrid() {
 	}, [])
 
 	const moveSnake = useCallback(() => {
-		if (isGameOver) return // Stop moving if game over
+		if (isGameOver) return
 
 		const newSnake = [...snake]
 		const snakeHead = newSnake[0]
@@ -85,7 +85,7 @@ export default function SnakeGrid() {
 	// Handle keyboard input for snake direction
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if (isGameOver) return // Ignore key presses if game over
+			if (isGameOver) return
 
 			if (event.key === "ArrowUp" && direction !== "DOWN") {
 				setDirection("UP")
@@ -97,7 +97,6 @@ export default function SnakeGrid() {
 				setDirection("RIGHT")
 			}
 		}
-
 		window.addEventListener("keydown", handleKeyDown)
 		return () => {
 			window.removeEventListener("keydown", handleKeyDown)

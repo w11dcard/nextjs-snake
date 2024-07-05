@@ -1,6 +1,6 @@
 "use client"
 
-import SnakeGrid from "@/components/SnakeGrid"
+import SnakeGrid from "@/app/components/SnakeGrid"
 
 export default function Home() {
 	return (

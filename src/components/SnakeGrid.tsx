@@ -4,14 +4,14 @@ import { Direction, GRID_SIZE, Point } from "@/src/lib/types"
 import { useCallback, useEffect, useState } from "react"
 
 export default function SnakeGrid() {
+	const [food, setFood] = useState<Point>({ x: 0, y: 0 })
+	const [direction, setDirection] = useState<Direction["direction"]>("RIGHT")
+	const [isGameOver, setIsGameOver] = useState<boolean>(false)
 	const [snake, setSnake] = useState<Point[]>([
 		{ y: 0, x: 2 },
 		{ y: 0, x: 1 },
 		{ y: 0, x: 0 },
 	])
-	const [food, setFood] = useState<Point>({ x: 0, y: 0 })
-	const [direction, setDirection] = useState<Direction>("RIGHT")
-	const [isGameOver, setIsGameOver] = useState<boolean>(false)
 
 	const generateFood = useCallback(() => {
 		let newFood: Point

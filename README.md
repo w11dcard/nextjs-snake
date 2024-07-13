@@ -1,6 +1,6 @@
 # Next.js Snake Game 🐍
 
-Next.js website for a simple Snake game.
+Next.js implementation of a simple Snake game.
 
 [🚀 Check it out!](https://wdc-snake.vercel.app/)
 

@@ -1,12 +1,18 @@
 "use client"
 
-import SnakeGrid from "@/src/components/SnakeGrid"
+import MainGrid from "@/src/components/MainGrid"
 
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center">
-			<h1 className="font-bold">Snake</h1>
-			<SnakeGrid />
+		<main className="mt-8 flex flex-col items-center justify-center">
+			<strong className="mb-4 text-4xl">Snake</strong>
+			<MainGrid />
+			<footer className="text-accent">
+				Made by{" "}
+				<a className="font-bold underline" href="https://github.com/w11dcard/">
+					w11dcard.
+				</a>
+			</footer>
 		</main>
 	)
 }

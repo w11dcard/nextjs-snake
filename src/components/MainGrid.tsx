@@ -3,7 +3,7 @@
 import { Direction, GRID_SIZE, Point } from "@/src/lib/types"
 import { useCallback, useEffect, useState } from "react"
 
-export default function SnakeGrid() {
+export default function MainGrid() {
 	const [food, setFood] = useState<Point>({ x: 0, y: 0 })
 	const [direction, setDirection] = useState<Direction["direction"]>("RIGHT")
 	const [isGameOver, setIsGameOver] = useState<boolean>(false)
@@ -104,11 +104,11 @@ export default function SnakeGrid() {
 	}, [direction, isGameOver])
 
 	return (
-		<div className="grid-cols-20 grid-rows-20 grid border">
+		<main className="grid-cols-20 grid-rows-20 mb-6 grid rounded border-foreground">
 			{isGameOver && (
-				<div className="absolute inset-0 flex flex-col items-center justify-center text-center text-4xl font-bold text-red-700">
-					<div>Game Over!</div>
-					<div className="mt-4 text-sm">Reload To Play Again</div>
+				<div className="inset-0 m-2 flex flex-col items-center rounded bg-destructive p-2 text-destructive-foreground">
+					<strong className="text-3xl">Game Over!</strong>
+					<p className="text-sm font-semibold">Press F5 to play again</p>
 				</div>
 			)}
 
@@ -117,7 +117,7 @@ export default function SnakeGrid() {
 					{Array.from({ length: GRID_SIZE }).map((_, x) => (
 						<div
 							key={x}
-							className={`h-5 w-5 border border-gray-300 ${
+							className={`h-5 w-5 border border-muted ${
 								snake.some((snakePart) => snakePart.x === x && snakePart.y === y) ? "bg-green-700" : ""
 							} ${food.x === x && food.y === y ? "bg-red-700" : ""}`}
 							style={{ boxSizing: "border-box" }}
@@ -125,6 +125,6 @@ export default function SnakeGrid() {
 					))}
 				</div>
 			))}
-		</div>
+		</main>
 	)
 }

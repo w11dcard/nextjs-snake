@@ -1,14 +1,14 @@
 dist/
 build/
 out/
+.next/
 coverage/
 test/
-.next/
-.vercel/
 node_modules/
+.vercel/
 .vscode/
-tmp/
 temp/
+tmp/
 
 *.tmp
 *.log*

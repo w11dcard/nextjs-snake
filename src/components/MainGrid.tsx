@@ -118,8 +118,8 @@ export default function MainGrid() {
 						<div
 							key={x}
 							className={`h-5 w-5 border border-muted ${
-								snake.some((snakePart) => snakePart.x === x && snakePart.y === y) ? "bg-green-700" : ""
-							} ${food.x === x && food.y === y ? "bg-red-700" : ""}`}
+								snake.some((snakePart) => snakePart.x === x && snakePart.y === y) ? "bg-accent-snake" : ""
+							} ${food.x === x && food.y === y ? "bg-accent-apple" : ""}`}
 							style={{ boxSizing: "border-box" }}
 						></div>
 					))}

@@ -1,8 +1,6 @@
 {
 	"compilerOptions": {
 		"plugins": [{ "name": "next" }],
-		"baseUrl": ".",
-		"paths": { "@/*": ["./*"] },
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"module": "esnext",
 		"jsx": "preserve",
@@ -17,7 +15,8 @@
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"allowImportingTsExtensions": true
+		"baseUrl": ".",
+		"paths": { "@/*": ["./*"] }
 	},
 	"include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next-env.d.ts"],
 	"exclude": ["node_modules"]

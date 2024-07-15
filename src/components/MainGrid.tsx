@@ -104,7 +104,7 @@ export default function MainGrid() {
 	}, [direction, isGameOver])
 
 	return (
-		<main className="grid-cols-20 grid-rows-20 mb-6 grid rounded border-foreground">
+		<div className="grid-cols-20 grid-rows-20 mb-6 grid rounded border-foreground">
 			{isGameOver && (
 				<div className="inset-0 m-2 flex flex-col items-center rounded bg-destructive p-2 text-destructive-foreground">
 					<strong className="text-3xl">Game Over!</strong>
@@ -125,6 +125,6 @@ export default function MainGrid() {
 					))}
 				</div>
 			))}
-		</main>
+		</div>
 	)
 }

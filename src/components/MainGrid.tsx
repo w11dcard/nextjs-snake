@@ -107,8 +107,8 @@ export default function MainGrid() {
 		<div className="grid-cols-20 grid-rows-20 mb-6 grid rounded border-foreground">
 			{isGameOver && (
 				<div className="inset-0 m-2 flex flex-col items-center rounded bg-destructive p-2 text-destructive-foreground">
-					<strong className="text-3xl">Game Over!</strong>
-					<p className="text-sm font-semibold">Press F5 to play again</p>
+					<strong className="mb-1 text-3xl">Game Over!</strong>
+					<p className="text-sm font-semibold">Press F5 to play again 🔄</p>
 				</div>
 			)}
 

@@ -6,7 +6,7 @@ Next.js implementation of a simple Snake game.
 
 ## 🖧 Stack
 
-- Next.js for server-side rendering.
+- Next.js for server-side rendering
 - TypeScript
 - Tailwind CSS
 

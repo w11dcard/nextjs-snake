@@ -1,4 +1,4 @@
-# Next.js Snake Game 🐍
+# Next.js Snake 🐍
 
 Next.js implementation of a simple Snake game.
 
